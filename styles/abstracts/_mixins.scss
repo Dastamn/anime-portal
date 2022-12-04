@@ -1,0 +1,35 @@
+@mixin themify($prop, $key) {
+
+    @each $theme-name, $theme-color in $themes {
+
+      .theme-#{$theme-name} & {
+        
+        @if $key == none {
+          #{$prop}: none;
+        } @else {
+          #{$prop}: map-get(map-get($themes, $theme-name), $key);
+        }
+      }
+    }
+  }
+  
+@mixin style-scrollbar() {
+    &::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        @include themify("background", "scrollbar-thumb");
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        @include themify("background", "scrollbar-track");
+    }
+
+    & {
+        @include themify("scrollbar-color", "scrollbar");
+        scrollbar-width: thin;
+    }
+}

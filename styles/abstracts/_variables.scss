@@ -1,0 +1,31 @@
+$light: rgb(242, 242, 247);
+$light-darker: rgb(229, 229, 234);
+
+$dark: rgb(28, 28, 30);
+$dark-lighter: rgb(44, 44, 46);
+
+$gray: rgb(142, 142, 147);
+$blue: rgb(64, 156, 255);
+$red: rgb(255, 69, 58);
+$teal: rgb(90, 200, 250);
+
+$themes: (
+  light: (
+    background: $light,
+    foreground: $light-darker,
+    primary: $blue,
+    scrollbar: $gray $light,
+    scrollbar-thumb: $gray,
+    scrollbar-track: $light,
+    text: $dark,
+  ),
+  dark: (
+    background: $dark,
+    foreground: $dark-lighter,
+    primary: $teal,
+    scrollbar: $dark-lighter $dark,
+    scrollbar-thumb: $dark-lighter,
+    scrollbar-track: $dark,
+    text: $light,
+  ),
+);
