@@ -1,3 +1,9 @@
+"use client";
+import { ApolloProvider } from "@apollo/client";
+import { ThemeProvider } from "next-themes";
+
+import { client } from "../apollo";
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 export default function RootLayout({
@@ -9,8 +15,13 @@ export default function RootLayout({
     <html>
       <head />
       <body>
-        <Navbar />
-        {children}
+        <ApolloProvider client={client}>
+          <ThemeProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </ApolloProvider>
       </body>
     </html>
   );
