@@ -1,7 +1,7 @@
 import { InMemoryCache } from "@apollo/client";
 import _merge from "deepmerge";
 
-import { dataObjectEquals } from "../utils";
+import { dataObjectEquals } from "../lib";
 
 const _noKeyFieldTypes = [
   "MediaConnection",
