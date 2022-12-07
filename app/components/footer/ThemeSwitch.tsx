@@ -1,7 +1,9 @@
+"use client";
+
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-export default function Footer() {
+export default function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 

@@ -1,7 +1,7 @@
 import { InMemoryCache } from "@apollo/client";
-import _ from "lodash";
+import _merge from "deepmerge";
 
-import { compareObjects } from "../utils";
+import { dataObjectEquals } from "../utils";
 
 const _noKeyFieldTypes = [
   "MediaConnection",
@@ -23,17 +23,14 @@ export const cache = new InMemoryCache({
         Page: {
           keyArgs: false,
           merge(existing, incoming) {
-            if (!existing || _.isEmpty(existing)) {
-              return incoming;
-            }
-            const merged = _.cloneDeep(existing);
-            Object.entries(incoming).forEach(
-              ([k, v]: [string, any]) =>
-                (merged[k] = v
-                  ? !!merged[k]
-                  : _.unionWith(merged[k], v, compareObjects))
-            );
-            return merged;
+            return _merge(existing, incoming, {
+              arrayMerge: (destinationArray, sourceArray) => [
+                ...sourceArray,
+                ...destinationArray.filter(d =>
+                  sourceArray.every(s => !dataObjectEquals(d, s))
+                ),
+              ],
+            });
           },
         },
       },
