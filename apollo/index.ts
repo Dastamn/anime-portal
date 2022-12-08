@@ -14,15 +14,18 @@ import { cache } from "./cache";
 let client: ApolloClient<NormalizedCacheObject> | null = null;
 
 const authLink = new ApolloLink((operation, forward) => {
-  const token = localStorage.getItem("token");
-  const authorization = (token && `Bearer ${token}`) || "";
-  authorization &&
-    operation.setContext(({ headers = {} }) => ({
-      headers: {
-        ...headers,
-        authorization,
-      },
-    }));
+  if (typeof window !== "undefined") {
+    // TODO: Switch to cookies
+    const token = localStorage.getItem("token");
+    const authorization = (token && `Bearer ${token}`) || "";
+    authorization &&
+      operation.setContext(({ headers = {} }) => ({
+        headers: {
+          ...headers,
+          authorization,
+        },
+      }));
+  }
   return forward(operation);
 });
 

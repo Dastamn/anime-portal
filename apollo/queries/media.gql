@@ -1,0 +1,51 @@
+#import "./fragments/media.gql"
+
+query getMediaPage(
+  $page: Int
+  $perPage: Int
+  $type: MediaType
+  $sort: [MediaSort]
+  $season: MediaSeason
+  $seasonYear: Int
+  $status: MediaStatus
+  $status_in: [MediaStatus]
+  $status_not_in: [MediaStatus]
+) {
+  Page(page: $page, perPage: $perPage) {
+    pageInfo {
+      ...pageInfo
+    }
+
+    media(
+      type: $type
+      sort: $sort
+      season: $season
+      seasonYear: $seasonYear
+      status: $status
+      status_in: $status_in
+      status_not_in: $status_not_in
+    ) {
+      id
+      title {
+        ...mediaTitle
+      }
+      genres
+      status
+      nextAiringEpisode {
+        ...nextAiringEpisode
+      }
+      mediaListEntry {
+        ...mediaListEntryStatus
+      }
+    }
+  }
+}
+
+query getMedia {
+  Media(id: 1) {
+    id
+    title {
+      ...mediaTitle
+    }
+  }
+}

@@ -1,3 +1,10 @@
+import Test from "./components/Test";
+
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      {/* @ts-expect-error Server Component */}
+      <Test />
+    </div>
+  );
 }

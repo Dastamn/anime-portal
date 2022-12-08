@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar";
 
-import Providers from "../providers";
+import Providers from "../helpers/providers";
 import "../styles/main.scss";
 import Footer from "./components/footer";
 

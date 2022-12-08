@@ -1,0 +1,34 @@
+#import "./misc.gql"
+
+fragment mediaTitle on MediaTitle {
+  romaji
+  english
+  userPreferred
+  native
+}
+
+fragment mediaCover on MediaCoverImage {
+  color
+  large
+  extraLarge
+}
+
+fragment nextAiringEpisode on AiringSchedule {
+  id
+  episode
+  airingAt
+  timeUntilAiring
+}
+
+fragment mediaListEntryStatus on MediaList {
+  id
+  status
+}
+
+fragment mediaListEntry on MediaList {
+  ...mediaListEntryStatus
+  score(format: POINT_100)
+  repeat
+  progress
+  progressVolumes
+}

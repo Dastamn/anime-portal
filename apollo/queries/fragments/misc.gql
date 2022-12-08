@@ -1,0 +1,13 @@
+fragment pageInfo on PageInfo {
+  total
+  perPage
+  currentPage
+  lastPage
+  hasNextPage
+}
+
+fragment date on FuzzyDate {
+  day
+  month
+  year
+}
