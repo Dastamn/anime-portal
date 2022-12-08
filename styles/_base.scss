@@ -4,18 +4,24 @@
     box-sizing: border-box;
 
     &:focus {
-        outline: 0;
         outline: none;
+    }
+
+    &::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: $color-scrollbar-thumb;
+        border-radius: 10px;
     }
 }
 
 body {
-    // @include style-scrollbar();
-    // @include themify("color", "text");
-    // @include themify("background-color", "background");
     line-height: 1;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    // transition: color 700ms ease, background-color 500ms linear;
+    transition: color 500ms ease;
 }
 
 a { 

@@ -26,25 +26,5 @@ $color-scrollbar: $color-scrollbar-thumb $color-scrollbar-track;
   $color-text: $light-1;
   $color-scrollbar-thumb: $dark-2;
   $color-scrollbar-track: $dark-1;
+  $color-scrollbar: $color-scrollbar-thumb $color-scrollbar-track;
 }
-
-// $themes: (
-//   light: (
-//     background: $light,
-//     foreground: $light-darker,
-//     primary: $blue,
-//     scrollbar: $gray $light,
-//     scrollbar-thumb: $gray,
-//     scrollbar-track: $light,
-//     text: $dark,
-//   ),
-//   dark: (
-//     background: $dark,
-//     foreground: $dark-lighter,
-//     primary: $teal,
-//     scrollbar: $dark-lighter $dark,
-//     scrollbar-thumb: $dark-lighter,
-//     scrollbar-track: $dark,
-//     text: $light,
-//   ),
-// );
