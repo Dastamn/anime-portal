@@ -15,16 +15,10 @@ $color-primary: $blue;
 $color-default: $gray;
 $color-danger: $red;
 $color-text: $dark-1;
-$color-scrollbar-thumb: $gray;
-$color-scrollbar-track: $light-1;
-$color-scrollbar: $color-scrollbar-thumb $color-scrollbar-track;
 
 [data-theme='dark'] {
   $color-background: $dark-1;
   $color-foreground: $dark-2;
   $color-primary: $teal;
   $color-text: $light-1;
-  $color-scrollbar-thumb: $dark-2;
-  $color-scrollbar-track: $dark-1;
-  $color-scrollbar: $color-scrollbar-thumb $color-scrollbar-track;
-}
+ }
