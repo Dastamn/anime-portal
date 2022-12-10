@@ -1,0 +1,29 @@
+.media-cover {
+    border-radius: 7px;
+    box-shadow: inset 0px -70px 40px -5px rgba(black, 0.7);
+    color: $light-1;
+    cursor: pointer;
+    height: 245px;
+    overflow: hidden;
+    position: relative;
+    user-select: none;
+    width: 165px;
+
+    img {
+        z-index: -1;
+    }
+
+    span {
+        @include text-ellipsis(2);
+        bottom: 0;
+        font-weight: 700;
+        margin: 7px;
+        opacity: .7;
+        position: absolute;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        height: 205px;
+        width: 140px;
+    }
+}
