@@ -52,9 +52,13 @@ export const cache = new InMemoryCache({
     Media: {
       fields: {
         type: {
-          read(name: string) {
-            return name.toLowerCase();
-          },
+          read: (name: string) => name.toLowerCase(),
+        },
+        status: {
+          read: (name: string) => name.toLowerCase(),
+        },
+        season: {
+          read: (name: string) => name.toLowerCase(),
         },
         // TODO: process airing date
       },

@@ -1,4 +1,4 @@
-#import "./misc.gql"
+#import "./misc.fragment.gql"
 
 fragment mediaTitle on MediaTitle {
   romaji
@@ -7,8 +7,9 @@ fragment mediaTitle on MediaTitle {
   native
 }
 
-fragment mediaCover on MediaCoverImage {
+fragment mediaCoverImage on MediaCoverImage {
   color
+  medium
   large
   extraLarge
 }

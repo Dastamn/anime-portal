@@ -1,6 +1,24 @@
-#import "./fragments/media.gql"
+#import "./fragments/media.fragment.gql"
 
-query getMediaPage(
+fragment baseMedia on Media {
+  id
+  title {
+    ...mediaTitle
+  }
+  coverImage {
+    ...mediaCoverImage
+  }
+  genres
+  status
+  nextAiringEpisode {
+    ...nextAiringEpisode
+  }
+  mediaListEntry {
+    ...mediaListEntryStatus
+  }
+}
+
+query getBaseMediaPage(
   $page: Int
   $perPage: Int
   $type: MediaType
@@ -12,9 +30,7 @@ query getMediaPage(
   $status_not_in: [MediaStatus]
 ) {
   Page(page: $page, perPage: $perPage) {
-    pageInfo {
-      ...pageInfo
-    }
+    ...page
 
     media(
       type: $type
@@ -25,27 +41,13 @@ query getMediaPage(
       status_in: $status_in
       status_not_in: $status_not_in
     ) {
-      id
-      title {
-        ...mediaTitle
-      }
-      genres
-      status
-      nextAiringEpisode {
-        ...nextAiringEpisode
-      }
-      mediaListEntry {
-        ...mediaListEntryStatus
-      }
+      ...baseMedia
     }
   }
 }
 
 query getMedia {
   Media(id: 1) {
-    id
-    title {
-      ...mediaTitle
-    }
+    ...baseMedia
   }
 }

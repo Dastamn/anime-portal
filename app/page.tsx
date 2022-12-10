@@ -1,10 +1,10 @@
-import Test from "./components/Test";
+import MediaList from "./components/media/MediaList";
 
 export default function Home() {
   return (
     <div>
       {/* @ts-expect-error Server Component */}
-      <Test />
+      <MediaList />
     </div>
   );
 }
