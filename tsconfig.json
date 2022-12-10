@@ -22,7 +22,10 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "paths": {
+      "#root/*": ["./*"]
+    }
   },
   "include": [
     "next-env.d.ts",

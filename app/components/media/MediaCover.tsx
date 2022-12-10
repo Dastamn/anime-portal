@@ -1,6 +1,6 @@
+import { BaseMediaFragment } from "#root/types";
 import Image from "next/image";
 import Link from "next/link";
-import { BaseMediaFragment } from "../../../types";
 
 export default function MediaCover({ data }: { data: BaseMediaFragment }) {
   return data.title && data.coverImage ? (

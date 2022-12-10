@@ -1,9 +1,9 @@
-import { initApollo } from "../../../apollo";
+import { initApollo } from "#root/apollo";
 import {
   BaseMediaFragment,
   GetBaseMediaPageDocument,
   GetBaseMediaPageQueryVariables,
-} from "../../../types";
+} from "#root/types";
 import MediaCover from "./MediaCover";
 
 async function getData(variables: GetBaseMediaPageQueryVariables) {
