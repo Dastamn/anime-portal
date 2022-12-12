@@ -1,17 +1,17 @@
 .list-header {
     display: flex;
     align-items: baseline;
+    justify-content: space-between;
     margin: 0 1rem .7rem;
-    // margin: 0 1rem 1rem 1rem;
 
-    // h1 {
-    //     margin-right: .5rem;
-    // }
+    h1 {
+        font-size: 1.5rem;
+    }
 
-    // svg {
-    //     transform: rotate(-90deg);
-    //     height: 1rem;
-    // }
+    span {
+        font-size: 0.8rem;
+        color: $color-primary;
+    }
 }
 
 .list-content {
@@ -22,7 +22,7 @@
     .chevron {
         cursor: pointer;
         opacity: .5;
-        transition: opacity 200ms linear;
+        transition: opacity 200ms ease;
 
         &:hover {
             opacity: 1;
@@ -36,7 +36,7 @@
         scroll-behavior: smooth;
         display: inherit;
         padding-bottom: 10px;
-        scroll-snap-type: x mandatory;
+        scroll-snap-type: x proximity;
 
         > * {
             scroll-snap-align: center;
