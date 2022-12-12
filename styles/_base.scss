@@ -36,3 +36,10 @@ ol, ul {
 input {
     border-radius: 0;
 }
+
+[data-theme='dark'] {
+    $color-background: $dark-1;
+    $color-foreground: $dark-2;
+    $color-primary: $teal;
+    $color-text: $light-1;
+}
