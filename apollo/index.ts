@@ -5,6 +5,7 @@ import {
   HttpLink,
   NormalizedCacheObject,
 } from "@apollo/client";
+import { getCookie } from "cookies-next";
 import merge from "deepmerge";
 import isEqual from "lodash/isEqual";
 import { useMemo } from "react";
@@ -14,17 +15,14 @@ import { cache } from "./cache";
 let client: ApolloClient<NormalizedCacheObject> | null = null;
 
 const authLink = new ApolloLink((operation, forward) => {
-  if (typeof window !== "undefined") {
-    // TODO: Switch to cookies
-    const token = localStorage.getItem("token");
-    const authorization = (token && `Bearer ${token}`) || "";
-    authorization &&
-      operation.setContext(({ headers = {} }) => ({
-        headers: {
-          ...headers,
-          authorization,
-        },
-      }));
+  const token = getCookie("token") as string;
+  if (token) {
+    operation.setContext(({ headers = {} }) => ({
+      headers: {
+        ...headers,
+        authorization: `Bearer ${token}`,
+      },
+    }));
   }
   return forward(operation);
 });
