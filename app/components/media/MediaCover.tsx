@@ -11,6 +11,7 @@ export default function MediaCover({ data }: { data: BaseMediaFragment }) {
           alt={data.title.romaji as string}
           loading="lazy"
           fill={true}
+          sizes="(max-width: 1024px) 140px, 165px"
           style={{ backgroundColor: data.coverImage.color as string }}
         />
         <span>{data.title.romaji}</span>

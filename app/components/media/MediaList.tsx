@@ -25,7 +25,7 @@ export default async function MediaList({
 }: MediaListProps) {
   const { data } = await getData(variables);
   return data.Page && data.Page.media ? (
-    <List title={title} link={link}>
+    <List title={title} link={link} shadow>
       {data.Page.media.map((media, i) => (
         <MediaCover key={i} data={media as BaseMediaFragment} />
       ))}
