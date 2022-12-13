@@ -9,6 +9,7 @@ import MediaCover from "./MediaCover";
 
 interface MediaListProps {
   title: string;
+  link?: string;
   variables: GetBaseMediaPageQueryVariables;
 }
 
@@ -17,10 +18,14 @@ async function getData(variables: GetBaseMediaPageQueryVariables) {
   return await client.query({ variables, query: GetBaseMediaPageDocument });
 }
 
-export default async function MediaList({ title, variables }: MediaListProps) {
+export default async function MediaList({
+  title,
+  link,
+  variables,
+}: MediaListProps) {
   const { data } = await getData(variables);
   return data.Page && data.Page.media ? (
-    <List title={title}>
+    <List title={title} link={link}>
       {data.Page.media.map((media, i) => (
         <MediaCover key={i} data={media as BaseMediaFragment} />
       ))}

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 
 interface Props {
@@ -11,34 +12,70 @@ interface Props {
 
 export function List({ title, link, children }: Props) {
   const slideId = "slider";
+
+  useEffect(() => {
+    const slider = document.getElementById(slideId) as HTMLElement;
+    updateState(slider);
+  }, []);
+
+  const [hideLeft, setHideLeft] = useState(false);
+  const [hideRight, setHideRight] = useState(false);
+
+  const updateState = (target: EventTarget & HTMLElement) => {
+    const { scrollWidth, clientWidth, scrollLeft, offsetWidth } = target;
+    if (scrollWidth === clientWidth) {
+      setHideLeft(true);
+      setHideRight(true);
+    } else if (scrollLeft === 0) {
+      setHideLeft(true);
+    } else if (scrollWidth - (scrollLeft + offsetWidth) < 1) {
+      setHideRight(true);
+    } else {
+      setHideLeft(false);
+      setHideRight(false);
+    }
+  };
+
+  const getButtonStyle = (hidden: boolean) =>
+    hidden ? { cursor: "auto", opacity: 0 } : {};
+
   const slide = (direction: "left" | "right") => {
-    const items = document.getElementById(slideId) as HTMLElement;
+    const slider = document.getElementById(slideId) as HTMLElement;
     let amount = 700;
     if (direction === "left") {
       amount *= -1;
     }
-    items.scrollLeft += amount;
+    slider.scrollLeft += amount;
   };
+
   return (
     <>
       <div className="list-header">
         <h1>{title}</h1>
-        {true && <Link href={"/"}>View All</Link>}
+        {link && <Link href={link}>View All</Link>}
       </div>
       <div className="list-content">
-        <BsChevronCompactLeft
-          size="2rem"
-          className="chevron"
+        <button
+          className="left"
+          style={getButtonStyle(hideLeft)}
           onClick={() => slide("left")}
-        />
-        <div id={slideId} className="items">
+        >
+          <BsChevronCompactLeft />
+        </button>
+        <div
+          id={slideId}
+          className="items"
+          onScroll={e => updateState(e.currentTarget)}
+        >
           {children}
         </div>
-        <BsChevronCompactRight
-          size="2rem"
-          className="chevron"
+        <button
+          className="right"
+          style={getButtonStyle(hideRight)}
           onClick={() => slide("right")}
-        />
+        >
+          <BsChevronCompactRight />
+        </button>
       </div>
     </>
   );

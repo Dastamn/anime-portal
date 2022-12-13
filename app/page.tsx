@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div>
       {/* @ts-expect-error Server Component */}
-      <MediaList title="Test" />
+      <MediaList title="Test" link="/" />
     </div>
   );
 }
