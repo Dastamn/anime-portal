@@ -50,6 +50,7 @@ input {
     --color-foreground: #{$dark-2};
     --color-primary: #{$teal};
     --color-text: #{$light-1};
+    --box-shadow-list: #{$light-inner-shadow};
 
     a:hover { 
         color: lighten($teal, 10%);

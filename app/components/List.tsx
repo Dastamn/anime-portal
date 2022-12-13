@@ -7,10 +7,11 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 interface Props {
   title: string;
   link?: string;
+  shadow?: boolean;
   children: JSX.Element[];
 }
 
-export function List({ title, link, children }: Props) {
+export function List({ title, link, shadow, children }: Props) {
   const slideId = "slider";
 
   useEffect(() => {
@@ -54,7 +55,7 @@ export function List({ title, link, children }: Props) {
         <h1>{title}</h1>
         {link && <Link href={link}>View All</Link>}
       </div>
-      <div className="list-content">
+      <div className={`list-content${shadow ? " shadow" : ""}`}>
         <button
           className="left"
           style={getButtonStyle(hideLeft)}
