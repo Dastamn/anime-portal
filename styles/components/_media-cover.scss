@@ -1,6 +1,6 @@
 .media-cover {
+    animation: scale-up 200ms ease;
     border-radius: 7px;
-    box-shadow: inset 0px -70px 40px -5px rgba(black, .7);
     color: $light-1;
     cursor: pointer;
     height: 245px;
@@ -8,24 +8,40 @@
     position: relative;
     user-select: none;
     width: 165px;
+    
+    .overlay {
+        box-shadow: inset 0px -70px 40px -5px black;
+        height: 100%;
+        opacity: .7;
+        position: relative;
+        width: 100%;
+        
+        span {
+            @include text-ellipsis(2);
+            bottom: 0;
+            font-size: .9rem;
+            font-weight: 700;
+            margin: .5rem;
+            position: absolute;
+        }
+    }
 
     img {
         border-radius: 7px;
-        z-index: -1;
-    }
-
-    span {
-        @include text-ellipsis(2);
-        bottom: 0;
-        font-size: .9rem;
-        font-weight: 700;
-        margin: .5rem;
-        opacity: .7;
-        position: absolute;
     }
 
     @media only screen and (max-width: 1024px) {
         height: 205px;
         width: 140px;
+    }
+
+    @keyframes scale-up {
+
+        from {
+            transform: scale(.95);
+        }
+        to {
+            transform: scale(1);
+        }
     }
 }
