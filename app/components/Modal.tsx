@@ -110,11 +110,11 @@ export default forwardRef(function Modal(
                 }
                 const main = document.querySelector("#main") as HTMLElement;
                 if (variant === "open") {
-                  setStyle(document.body, {
-                    backgroundColor: "black",
-                    // position: "fixed",
-                    // inset: "0",
-                  });
+                  if (window.scrollY === 0) {
+                    setStyle(document.body, {
+                      backgroundColor: "black",
+                    });
+                  }
                   setStyle(main, {
                     borderRadius: "8px",
                     transform:
