@@ -23,8 +23,8 @@ body {
     color: var(--color-text);
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     line-height: 1;
-    overflow-x: hidden;
-    transition: color 500ms ease background-color 300ms linear;
+    transition: border-radius, color 500ms cubic-bezier(.32, .72, 0, 1);
+    min-height: 100vh;
 }
 
 a { 
@@ -43,6 +43,12 @@ ol, ul {
 
 input {
     border-radius: 0;
+}
+
+#main {
+    background-color: var(--color-background);
+    min-height: 100vh;
+    width: 100%;
 }
 
 [data-theme="dark"] {

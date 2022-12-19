@@ -14,9 +14,12 @@ export default function RootLayout({
       <head />
       <body>
         <Providers>
-          <Navbar />
-          {children}
-          <Footer />
+          <div id="main">
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
+          <div id="modal" />
         </Providers>
       </body>
     </html>
