@@ -85,10 +85,6 @@ export default forwardRef(function Modal(
 
   const isSmallScreen = () => width && width <= 600;
 
-  useEffect(() => {
-    console.log(width);
-  }, [width]);
-
   if (!mounted) {
     return null;
   }
@@ -142,7 +138,6 @@ export default forwardRef(function Modal(
               initial={{ x: "-50%", y: "100%" }}
               animate={{ x: "-50%", y: "-50%", transition }}
               exit={{ x: "-50%", y: "100%", transition }}
-              transition={{ duration: 0.2 }}
             >
               {children}
             </m.div>
