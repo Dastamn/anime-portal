@@ -114,7 +114,7 @@ export default forwardRef(function Modal(
                   setStyle(main, {
                     borderRadius: "8px",
                     transform:
-                      "scale(0.93) translateY(calc(env(safe-area-inset-top)))",
+                      "scale(0.93) translateY(env(safe-area-inset-top))",
                     transitionProperty: "transform, border-radius",
                     transitionDuration: `${transition.duration}s`,
                     transitionTimingFunction: `cubic-bezier(${transition.ease.join(
