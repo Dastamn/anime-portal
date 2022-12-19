@@ -17,7 +17,7 @@ import { createPortal } from "react-dom";
 
 const transition = {
   ease: [0.32, 0.72, 0, 1],
-  duration: 0.35,
+  duration: 0.5,
 };
 
 const originalStyles = new Map<HTMLElement, { [x: string]: any }>();
@@ -110,13 +110,17 @@ export default forwardRef(function Modal(
                 }
                 const main = document.querySelector("#main") as HTMLElement;
                 if (variant === "open") {
-                  setStyle(document.body, { backgroundColor: "black" });
+                  setStyle(document.body, {
+                    backgroundColor: "black",
+                    // position: "fixed",
+                    // inset: "0",
+                  });
                   setStyle(main, {
                     borderRadius: "8px",
-                    overflow: "hidden",
-                    transform: "scale(0.93)",
+                    transform:
+                      "scale(0.93) translateY(calc(env(safe-area-inset-top) + 8px))",
                     transitionProperty: "transform",
-                    transitionDuration: "200ms",
+                    transitionDuration: `${transition.duration}s`,
                     transitionTimingFunction: `cubic-bezier(${transition.ease.join(
                       ","
                     )})`,
