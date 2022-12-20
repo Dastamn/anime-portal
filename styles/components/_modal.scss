@@ -12,8 +12,8 @@
 
 .modal-box {
 
-    $header-height: 50px;
-    $box-margin-top: 40px;
+    $header-height: 60px;
+    $box-margin-top: 45px;
 
     background-color: var(--color-foreground);
     border-radius: 12px;
@@ -38,7 +38,7 @@
         height: 100%;
         max-height: calc(100% - $header-height);
         overflow: hidden auto;
-        padding: 1rem;
+        padding: 1.2rem;
     }
 
     @media screen and (max-width: 650px) {
