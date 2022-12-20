@@ -11,6 +11,10 @@
 }
 
 .modal-box {
+
+    $header-height: 50px;
+    $box-margin-top: 40px;
+
     background-color: var(--color-foreground);
     border-radius: 12px;
     height: 50%;
@@ -20,11 +24,32 @@
     top: 50%;
     width: 50%;
 
+    .header {
+        align-items: center;
+        background-color: rgba(var(--color-foreground), .7);
+        display: flex;
+        height: $header-height;
+        justify-content: center;
+        position: sticky;
+        width: 100%;
+    }
+
+    .content {
+        height: 100%;
+        max-height: calc(100% - $header-height);
+        overflow: hidden auto;
+        padding: 1rem;
+    }
+
     @media screen and (max-width: 650px) {
         border-radius: 12px 12px 0 0;
         height: 100vh;
-        margin-top: calc(60px + env(safe-area-inset-top));
-        width: 100vw;
+        margin-top: calc($box-margin-top + env(safe-area-inset-top));
         min-width: auto;
+        width: 100vw;
+
+        .content {
+            max-height: calc(100% - $box-margin-top - $header-height - env(safe-area-inset-top));
+        }
     }
 }

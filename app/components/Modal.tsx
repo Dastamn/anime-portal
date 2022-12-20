@@ -139,7 +139,10 @@ export default forwardRef(function Modal(
               animate={{ x: "-50%", y: "-50%", transition }}
               exit={{ x: "-50%", y: "100%", transition }}
             >
-              {children}
+              <div className="header">
+                <h2>Modal</h2>
+              </div>
+              <div className="content">{children}</div>
             </m.div>
           </>
         </LazyMotion>
