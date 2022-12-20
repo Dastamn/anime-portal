@@ -12,7 +12,7 @@ interface Props {
 }
 
 export function List({ title, link, shadow, children }: Props) {
-  const slideId = "slider";
+  const slideId = `${title.toLowerCase().split(/\s+/).join("-")}${link}`;
 
   useEffect(() => {
     const slider = document.getElementById(slideId) as HTMLElement;

@@ -6,11 +6,11 @@ export default function Home() {
     <>
       <TestModal />
       {/* @ts-expect-error Server Component */}
-      <MediaList title="Test" link="/" />
+      <MediaList title="Test" link="/1" />
       {/* @ts-expect-error Server Component */}
-      <MediaList title="Test" link="/" />
+      <MediaList title="Test" link="/2" />
       {/* @ts-expect-error Server Component */}
-      <MediaList title="Test" link="/" />
+      <MediaList title="Test" link="/3" />
       <TestModal />
     </>
   );
