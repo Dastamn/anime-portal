@@ -1,6 +1,5 @@
 "use client";
 
-import useWindowSize from "#root/helpers/hooks/useWindowSize";
 import { loadDomAnimation } from "#root/lib/motion";
 import { IModalRef } from "#root/types";
 import { AnimatePresence, LazyMotion, m } from "framer-motion";
@@ -13,6 +12,7 @@ import {
   useImperativeHandle,
   useState,
 } from "react";
+import { isMobile } from "react-device-detect";
 import { createPortal } from "react-dom";
 
 const transition = {
@@ -81,10 +81,6 @@ export default forwardRef(function Modal(
 
   useImperativeHandle(ref, () => ({ ready: mounted, open }));
 
-  const { width } = useWindowSize();
-
-  const isSmallScreen = () => width && width <= 600;
-
   if (!mounted) {
     return null;
   }
@@ -101,7 +97,7 @@ export default forwardRef(function Modal(
               animate="open"
               exit="closed"
               onAnimationStart={variant => {
-                if (!isSmallScreen()) {
+                if (!isMobile) {
                   return;
                 }
                 const main = document.querySelector("#main") as HTMLElement;

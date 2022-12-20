@@ -14,13 +14,14 @@
 
     $header-height: 60px;
     $box-margin-top: 45px;
+    $big-screen-min-width: 650px;
 
     background-color: var(--color-foreground);
     border-radius: 12px;
-    height: 50%;
+    height: 60%;
     left: 50%;
-    min-width: 650px;
-    overflow: hidden;
+    max-height: calc($big-screen-min-width - 50px);
+    min-width: $big-screen-min-width;
     top: 50%;
     width: 50%;
 
@@ -41,12 +42,17 @@
         padding: 1.2rem;
     }
 
-    @media screen and (max-width: 650px) {
+    @media screen and (max-width: $big-screen-min-width), screen and (orientation: landscape) and (max-height: 450px) and (max-width: 930px) {
         border-radius: 12px 12px 0 0;
         height: 100vh;
         margin-top: calc($box-margin-top + env(safe-area-inset-top));
-        min-width: auto;
+        min-width: unset;
+        max-height: unset;
         width: 100vw;
+
+        .header {
+            top: calc($box-margin-top + env(safe-area-inset-top));
+        }
 
         .content {
             max-height: calc(100% - $box-margin-top - $header-height - env(safe-area-inset-top));
