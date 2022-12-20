@@ -102,11 +102,14 @@ export default forwardRef(function Modal(
                 }
                 const main = document.querySelector("#main") as HTMLElement;
                 if (variant === "open") {
-                  if (window.scrollY === 0) {
-                    setStyle(document.body, {
-                      backgroundColor: "black",
-                    });
-                  }
+                  const isTop = !window.scrollY;
+                  const body = document.body;
+                  setStyle(body, {
+                    backgroundColor: isTop
+                      ? "black"
+                      : body.style.backgroundColor,
+                    overflow: "hidden",
+                  });
                   setStyle(main, {
                     borderRadius: "8px",
                     transform:
