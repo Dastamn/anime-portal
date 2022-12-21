@@ -57,12 +57,14 @@
         overflow: auto hidden;
         padding-bottom: 1rem;
         scroll-behavior: smooth;
+        scroll-padding-inline: 2rem;
+        scroll-snap-stop: normal;
         scroll-snap-type: x proximity;
         width: 100%;
 
         > * {
             margin-right: 1rem;
-            scroll-snap-align: center;
+            scroll-snap-align: start;
         }
 
         > *:last-child {
