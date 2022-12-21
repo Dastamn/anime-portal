@@ -55,7 +55,7 @@
         height: 100%;
         margin: 0 2rem;
         overflow: auto hidden;
-        padding-bottom: 1rem;
+        padding-bottom: 1.2rem;
         scroll-behavior: smooth;
         scroll-padding-inline: 2rem;
         scroll-snap-stop: normal;
@@ -88,15 +88,10 @@
         
         .items {
             margin: 0;
-
-            > * {
-                margin-left: 1rem;
-                margin-right: 0;
-            }
+            padding: 0 1rem 1.2rem;
     
             > *:last-child {
-                margin-right: 1rem;
-                scroll-snap-align: center;
+                margin-right: 0;
             }
         }
     }

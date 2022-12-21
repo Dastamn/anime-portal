@@ -1,6 +1,6 @@
 .media-cover {
     animation: scale-up 200ms ease;
-    border-radius: 7px;
+    border-radius: 8px;
     color: $light-1;
     cursor: pointer;
     height: 245px;
@@ -24,10 +24,6 @@
             margin: .5rem;
             position: absolute;
         }
-    }
-
-    img {
-        border-radius: 7px;
     }
 
     @media only screen and (max-width: 1024px) {
