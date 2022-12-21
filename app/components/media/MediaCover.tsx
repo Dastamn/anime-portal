@@ -13,7 +13,7 @@ export default function MediaCover({ data }: { data: BaseMediaFragment }) {
           src={data.coverImage.large as string}
           alt={data.title.romaji as string}
           loading="lazy"
-          sizes="(max-width: 1024px) 140px, 165px"
+          sizes="(max-width: 768px) 115px,(max-width: 1024px) 140px, 165px"
           fill={true}
           motionStyle={{
             position: "absolute",
