@@ -1,6 +1,8 @@
 .media-cover {
+    $border-radius: 8px;
+
     animation: scale-up 200ms ease;
-    border-radius: 8px;
+    border-radius: $border-radius;
     color: $light-1;
     cursor: pointer;
     height: 245px;
@@ -10,6 +12,9 @@
     width: 165px;
     
     .overlay {
+        --span-line-clamp: 3;
+        --span-line-height: 1rem;
+
         box-shadow: inset 0px -70px 40px -5px black;
         height: 100%;
         opacity: .7;
@@ -17,13 +22,18 @@
         width: 100%;
         
         span {
-            @include text-ellipsis(2);
+            @include text-ellipsis(var(--span-line-clamp), calc(var(--span-line-clamp) * var(--span-line-height)));
             bottom: 0;
             font-size: .9rem;
             font-weight: 700;
+            line-height: var(--span-line-height);
             margin: .5rem;
             position: absolute;
         }
+    }
+
+    img {
+        border-radius: $border-radius;
     }
 
     @media only screen and (max-width: 1024px) {
@@ -35,10 +45,14 @@
         height: 165px;
         width: 115px;
 
-        .overlay span {
-            font-size: .8rem;
-            font-weight: 600;
-        }
+        .overlay {
+            --span-line-clamp: 2;
+            --span-line-height: .9rem;
+
+            span {
+                font-size: .8rem;
+                font-weight: 600;
+        }}
     }
 
     @keyframes scale-up {

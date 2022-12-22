@@ -1,7 +1,8 @@
-@mixin text-ellipsis($line-clamp: 1) {
+@mixin text-ellipsis($line-clamp: 1, $max-height: none) {
     display: -webkit-box;
-    -webkit-line-clamp: $line-clamp;
-    -webkit-box-orient: vertical;
+    max-height: $max-height;
     overflow: hidden;
     text-overflow: ellipsis;
+    -webkit-line-clamp: $line-clamp;
+    -webkit-box-orient: vertical;
 }
