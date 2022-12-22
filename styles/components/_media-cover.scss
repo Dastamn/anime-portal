@@ -1,7 +1,6 @@
 .media-cover {
     $border-radius: 8px;
 
-    animation: scale-up 200ms ease;
     border-radius: $border-radius;
     color: $light-1;
     cursor: pointer;
@@ -39,6 +38,10 @@
     @media only screen and (max-width: 1024px) {
         height: 205px;
         width: 140px;
+
+        .overlay {
+            --span-line-clamp: 2;
+        }
     }
 
     @media only screen and (max-width: 768px) {
@@ -46,22 +49,12 @@
         width: 115px;
 
         .overlay {
-            --span-line-clamp: 2;
             --span-line-height: .9rem;
 
             span {
                 font-size: .8rem;
                 font-weight: 600;
-        }}
-    }
-
-    @keyframes scale-up {
-
-        from {
-            transform: scale(.9);
-        }
-        to {
-            transform: scale(1);
+            }
         }
     }
 }
