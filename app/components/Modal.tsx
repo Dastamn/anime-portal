@@ -111,17 +111,22 @@ export default forwardRef(function Modal(
                     overflow: "hidden",
                   });
                   setStyle(main, {
+                    background: "var(--background-2)",
                     borderRadius: "8px",
                     transform:
                       "scale(0.93) translateY(env(safe-area-inset-top))",
-                    transitionProperty: "transform, border-radius",
+                    transitionProperty: "transform, border-radius, background",
                     transitionDuration: `${transition.duration}s`,
                     transitionTimingFunction: `cubic-bezier(${transition.ease.join(
                       ","
                     )})`,
                   });
                 } else {
-                  resetStyle(main, ["transform"]);
+                  resetStyle(main, [
+                    "transform",
+                    "border-radius",
+                    "background",
+                  ]);
                 }
               }}
               onAnimationComplete={variant => {
