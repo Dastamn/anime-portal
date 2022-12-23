@@ -1,30 +1,56 @@
-$light-1: rgb(242, 242, 247);
-$light-2: rgb(229, 229, 234);
-
-$dark-1: rgb(28, 28, 30);
-$dark-2: rgb(44, 44, 46);
-
-$gray: rgb(142, 142, 147);
-$blue: rgb(64, 156, 255);
-$red: rgb(255, 69, 58);
-$teal: rgb(90, 200, 250);
-
-$light-inner-shadow: inset 0px -100px 100px -100px rgba(white, .1);
-$dark-inner-shadow: inset 0px -100px 100px -100px rgba(black, .2);
-
-$color-background: $light-1;
-$color-foreground: $light-2;
-$color-primary: $blue;
-$color-default: $gray;
-$color-danger: $red;
-$color-text: $dark-1;
-
 :root {
-    --color-background: #{$light-1};
-    --color-foreground: #{$light-2};
-    --color-primary: #{$blue};
-    --color-default: #{$gray};
-    --color-danger: #{$red};
-    --color-text: #{$dark-1};
-    --box-shadow-list: #{$dark-inner-shadow};
+    @include define-color('background-1', #FFFFFFFF);
+    @include define-color('background-2', #F2F2F7FF);
+    @include define-color('background-3', #FFFFFFFF);
+
+    @include define-color('text-1', #000000);
+    @include define-color('text-3', #3C3C4399);
+    @include define-color('text-3', #3C3C434D);
+
+    @include define-color('gray-1', #8E8E93FF);
+    @include define-color('gray-2', #AEAEB2FF);
+    @include define-color('gray-3', #C7C7CCFF);
+
+    @include define-color('red', #FF3B30FF);
+    @include define-color('orange', #FF9500FF);
+    @include define-color('yellow', #FFCC00FF);
+    @include define-color('green', #34C759FF);
+    @include define-color('teal', #5AC8FAFF);
+    @include define-color('blue', #007AFFFF);
+    @include define-color('indigo', #5856D6FF);
+    @include define-color('purple', #AF52DEFF);
+
+    @include define-color('separator', #3C3C434A);
+
+    @include define-color('primary', #007AFFFF);
+    @include define-color('default', #8E8E93FF);
+    @include define-color('danger', #FF3B30FF);
+    @include define-color('warning', #FF9500FF);
+}
+
+[data-theme="dark"] {
+    @include define-color('background-1', #000000);
+    @include define-color('background-2', #1C1C1EFF);
+    @include define-color('background-3', #2C2C2EFF);
+
+    @include define-color('text-1', #FFFFFFFF);
+    @include define-color('text-3', #EBEBF599);
+    @include define-color('text-3', #EBEBF54D);
+
+    @include define-color('gray-1', #8E8E93FF);
+    @include define-color('gray-2', #636366FF);
+    @include define-color('gray-3', #48484AFF);
+
+    @include define-color('red', #FF453AFF);
+    @include define-color('orange', #FF9F0AFF);
+    @include define-color('yellow', #FFD60AFF);
+    @include define-color('green', #30D158FF);
+    @include define-color('teal', #64D2FFFF);
+    @include define-color('blue', #0A84FFFF);
+    @include define-color('indigo', #5E5CE6FF);
+    @include define-color('purple', #BF5AF2FF);
+
+    @include define-color('separator', #54545899);
+
+    @include define-color('primary', #64D2FFFF);
 }

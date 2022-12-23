@@ -20,7 +20,7 @@
     position: relative;
     
     &.shadow {
-        box-shadow: var(--box-shadow-list);
+        box-shadow: inset 0px -100px 100px -100px color('text-1', $alpha: - .85);
     }
 
     .left, .right {

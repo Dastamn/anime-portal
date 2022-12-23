@@ -1,3 +1,11 @@
+@mixin define-color($title, $color) {
+    --#{$title}: #{$color};
+    --#{$title}-h: #{hue($color)};
+    --#{$title}-l: #{lightness($color)};
+    --#{$title}-s: #{saturation($color)};
+    --#{$title}-a: #{alpha($color)};
+}
+
 @mixin text-ellipsis($line-clamp: 1, $max-height: none) {
     display: -webkit-box;
     max-height: $max-height;

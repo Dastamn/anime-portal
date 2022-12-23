@@ -16,22 +16,24 @@
     $box-margin-top: 45px;
     $big-screen-min-width: 650px;
 
-    background-color: var(--color-foreground);
+    background-color: color('background-2');
     border-radius: 12px;
     height: 60%;
     left: 50%;
     max-height: calc($big-screen-min-width - 50px);
     min-width: $big-screen-min-width;
+    overflow: hidden;
     top: 50%;
     width: 50%;
 
     .header {
         align-items: center;
-        background-color: rgba(var(--color-foreground), .7);
+        background-color: color('background-2', $alpha: - 0.5);
         display: flex;
         height: $header-height;
         justify-content: center;
         position: sticky;
+        top: 0;
         width: 100%;
     }
 
@@ -49,10 +51,6 @@
         min-width: unset;
         max-height: unset;
         width: 100vw;
-
-        .header {
-            top: calc($box-margin-top + env(safe-area-inset-top));
-        }
 
         .content {
             max-height: calc(100% - $box-margin-top - $header-height - env(safe-area-inset-top));
