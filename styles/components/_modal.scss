@@ -44,7 +44,7 @@
 
     @media screen and (max-width: $big-screen-min-width), screen and (orientation: landscape) and (max-height: 450px) and (max-width: 930px) {
         border-radius: 12px 12px 0 0;
-        height: 100vh;
+        height: 100dvh;
         margin-top: calc($box-margin-top + env(safe-area-inset-top));
         min-width: unset;
         max-height: unset;
