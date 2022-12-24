@@ -20,10 +20,10 @@ const transition = {
   duration: 0.5,
 };
 
-const originalStyles = new Map<HTMLElement, { [x: string]: any }>();
+const originalStyles = new Map<HTMLElement, CSSProperties>();
 
 const setStyle = (el: HTMLElement, style: CSSProperties) => {
-  let originalStyles_ = {} as { [x: string]: any };
+  let originalStyles_ = {} as CSSProperties;
   Object.entries(style).forEach(([key, value]) => {
     originalStyles_[key] = el.style[key];
     el.style[key] = value;
@@ -97,30 +97,39 @@ export default forwardRef(function Modal(
               animate="open"
               exit="closed"
               onAnimationStart={variant => {
-                if (!isMobile) {
-                  return;
-                }
                 const main = document.querySelector("#main") as HTMLElement;
                 if (variant === "open") {
                   const isTop = !window.scrollY;
                   const body = document.body;
-                  setStyle(body, {
-                    backgroundColor: isTop
-                      ? "black"
-                      : body.style.backgroundColor,
+                  let bodyStyle = {
                     overflow: "hidden",
-                  });
-                  setStyle(main, {
+                  } as CSSProperties;
+                  let mainStyle = {
                     background: "var(--background-2)",
-                    borderRadius: "8px",
-                    transform:
-                      "scale(0.93) translateY(env(safe-area-inset-top))",
-                    transitionProperty: "transform, border-radius, background",
+                    transitionProperty: "background",
                     transitionDuration: `${transition.duration}s`,
                     transitionTimingFunction: `cubic-bezier(${transition.ease.join(
                       ","
                     )})`,
-                  });
+                  } as CSSProperties;
+                  if (isMobile) {
+                    bodyStyle = {
+                      ...bodyStyle,
+                      backgroundColor: isTop
+                        ? "black"
+                        : body.style.backgroundColor,
+                    };
+                    mainStyle = {
+                      ...mainStyle,
+                      borderRadius: "8px",
+                      transform:
+                        "scale(0.93) translateY(env(safe-area-inset-top))",
+                      transitionProperty:
+                        "transform, border-radius, background",
+                    };
+                  }
+                  setStyle(body, bodyStyle);
+                  setStyle(main, mainStyle);
                 } else {
                   resetStyle(main, [
                     "transform",
