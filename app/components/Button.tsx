@@ -1,27 +1,21 @@
 import { loadDomAnimation } from "#root/lib/motion";
 import { useButton } from "@react-aria/button";
 import { LazyMotion, m, useAnimation } from "framer-motion";
-import { ReactNode, RefObject, useRef } from "react";
+import React, { ReactNode, RefObject, useRef } from "react";
 import { FocusRing } from "react-aria";
-interface IButton {
-  type?: "primary" | "danger" | "warning" | "default";
+
+interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  sort?: "primary" | "danger" | "warning" | "default";
   look?: "plain" | "gray" | "filled";
-  delay?: boolean;
   bold?: boolean;
-  onClick: () => void;
   children: ReactNode | string;
 }
 
 const transition = { duration: 0.2 };
 
-export function Button({
-  type = "default",
-  look = "filled",
-  bold,
-  delay,
-  onClick,
-  children,
-}: IButton) {
+export function Button(props: IButton) {
+  const { id, sort, look, bold, disabled, onClick, children, ...otherProps } =
+    props;
   const ref = useRef() as RefObject<Element>;
   const animationControls = useAnimation();
   const variants =
@@ -36,28 +30,35 @@ export function Button({
         };
   const { buttonProps } = useButton(
     {
-      onPressStart: () => {
-        animationControls.stop();
-        animationControls.set(variants["start"]);
-      },
-      onPressEnd: () => {
-        animationControls.start(variants["end"], transition);
-      },
-      onPress: onClick,
+      onPressStart: disabled
+        ? undefined
+        : () => {
+            animationControls.stop();
+            animationControls.set(variants["start"]);
+          },
+      onPressEnd: disabled
+        ? undefined
+        : () => {
+            animationControls.start(variants["end"], transition);
+          },
+      onPress: disabled ? undefined : (onClick as any),
     },
     ref
   );
+
   return (
     <FocusRing focusRingClass="">
       <LazyMotion strict features={loadDomAnimation}>
         <m.button
+          id={id}
           animate={animationControls}
-          className={`btn ${type} ${look}`}
+          className={`btn ${sort} ${look} ${disabled ? "disabled" : ""}`}
           style={{
             WebkitTapHighlightColor: "transparent",
             fontWeight: bold ? "bold" : "normal",
           }}
           {...(buttonProps as any)}
+          {...otherProps}
         >
           {children}
         </m.button>

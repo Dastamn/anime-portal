@@ -1,8 +1,10 @@
 "use client";
 
 import { loadDomAnimation } from "#root/lib/motion";
+import loading from "#root/public/assets/loading.gif";
 import { IModalRef } from "#root/types";
 import { AnimatePresence, LazyMotion, m } from "framer-motion";
+import Image from "next/image";
 import {
   CSSProperties,
   ForwardedRef,
@@ -12,9 +14,17 @@ import {
   useImperativeHandle,
   useState,
 } from "react";
-import { isMobile } from "react-device-detect";
+import { isMobile, isTablet } from "react-device-detect";
 import { createPortal } from "react-dom";
 import { Button } from "./Button";
+
+interface IModal {
+  title: string;
+  cancelLabel?: string;
+  submitLabel: string;
+  submitAction: () => void;
+  children: ReactNode;
+}
 
 const transition = {
   ease: [0.32, 0.72, 0, 1],
@@ -62,11 +72,13 @@ const backdropVariants = {
 };
 
 export default forwardRef(function Modal(
-  { children }: { children: ReactNode },
+  { title, cancelLabel = "close", submitLabel, submitAction, children }: IModal,
   ref: ForwardedRef<IModalRef>
 ) {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  // TODO: Handle error
 
   useEffect(() => {
     setMounted(true);
@@ -81,6 +93,16 @@ export default forwardRef(function Modal(
   const close = () => setIsOpen(false);
 
   useImperativeHandle(ref, () => ({ ready: mounted, open }));
+
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    const [res] = await Promise.allSettled([
+      submitAction(),
+      new Promise(_ => setTimeout(_, 800)),
+    ]);
+    setIsSubmitting(false);
+    close();
+  };
 
   if (!mounted) {
     return null;
@@ -113,7 +135,7 @@ export default forwardRef(function Modal(
                       ","
                     )})`,
                   } as CSSProperties;
-                  if (isMobile) {
+                  if (isMobile && !isTablet) {
                     bodyStyle = {
                       ...bodyStyle,
                       backgroundColor: isTop
@@ -154,22 +176,26 @@ export default forwardRef(function Modal(
               exit={{ x: "-50%", y: "100%", transition }}
             >
               <div className="header">
-                <Button
-                  type="primary"
-                  look="plain"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Cancel
+                <Button id="cancel" sort="primary" look="plain" onClick={close}>
+                  {cancelLabel}
                 </Button>
-                <span style={{ fontWeight: "bold" }}>Modal</span>
-                <Button
-                  type="primary"
-                  look="plain"
-                  bold
-                  onClick={() => setIsOpen(false)}
-                >
-                  Save
-                </Button>
+                <span id="title">{title}</span>
+                {submitLabel && (
+                  <Button
+                    id="submit"
+                    sort="primary"
+                    look="plain"
+                    bold
+                    disabled={isSubmitting}
+                    onClick={handleSubmit}
+                  >
+                    {isSubmitting ? (
+                      <Image src={loading} alt="loading" height={16} />
+                    ) : (
+                      submitLabel
+                    )}
+                  </Button>
+                )}
               </div>
               <div className="content">{children}</div>
             </m.div>

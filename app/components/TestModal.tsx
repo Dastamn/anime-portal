@@ -11,7 +11,13 @@ export default function TestModal() {
   return (
     <>
       <button onClick={openModal}>Open</button>
-      <Modal ref={modalRef}>
+      <Modal
+        title="Lorem Ipsum"
+        cancelLabel="close"
+        submitLabel="done"
+        submitAction={() => console.log("submit")}
+        ref={modalRef}
+      >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
         reiciendis id suscipit ullam illum magni aspernatur, veniam
         reprehenderit mollitia odit aliquam. Itaque magnam repudiandae autem

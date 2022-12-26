@@ -26,16 +26,40 @@
     width: 50%;
     
     .header {
-        align-items: center;
         backdrop-filter: blur(10px);
         background-color: color('background-2', $alpha: - 0.2);
-        display: flex;
         height: $header-height;
-        justify-content: space-between;
         padding: 0 0.45rem;
         position: fixed;
+        text-transform: capitalize;
         top: 0;
         width: calc(100% - 7px /*scrollbar*/);
+
+        #title {
+            font-weight: bold;
+            left: 50%;
+            max-width: 50%;
+            position: absolute;
+            text-overflow: ellipsis;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
+        #cancel {
+            left: .45rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        #submit {
+            position: absolute;
+            right: .45rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
     }
 
     .content {
