@@ -1,10 +1,8 @@
 "use client";
 
 import { loadDomAnimation } from "#root/lib/motion";
-import loading from "#root/public/assets/loading.gif";
 import { IModalRef } from "#root/types";
 import { AnimatePresence, LazyMotion, m } from "framer-motion";
-import Image from "next/image";
 import {
   CSSProperties,
   ForwardedRef,
@@ -16,7 +14,7 @@ import {
 } from "react";
 import { isMobile, isTablet } from "react-device-detect";
 import { createPortal } from "react-dom";
-import { Button } from "./Button";
+import Button from "./Button";
 
 interface IModal {
   title: string;
@@ -183,21 +181,24 @@ export default forwardRef(function Modal(
                 {submitLabel && (
                   <Button
                     id="submit"
+                    type="submit"
                     sort="primary"
                     look="plain"
                     bold
-                    disabled={isSubmitting}
+                    loading={isSubmitting}
                     onClick={handleSubmit}
                   >
-                    {isSubmitting ? (
-                      <Image src={loading} alt="loading" height={16} />
-                    ) : (
-                      submitLabel
-                    )}
+                    {submitLabel}
                   </Button>
                 )}
               </div>
-              <div className="content">{children}</div>
+              <div
+                className="content"
+                style={isSubmitting ? { opacity: 0.5 } : {}}
+              >
+                {children}
+              </div>
+              {isSubmitting && <div className="overlay" />}
             </m.div>
           </>
         </LazyMotion>
