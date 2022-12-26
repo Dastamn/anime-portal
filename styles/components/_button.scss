@@ -1,11 +1,11 @@
 .btn {  
     border: none;
     border-radius: 8px;
-    padding: 0.45rem 0.75rem;
-    font-size: 1rem;
     cursor: pointer;
-    user-select: none;
+    font-size: 1rem;
+    padding: 0.45rem 0.75rem;
     touch-action: none;
+    user-select: none;
     
     &.primary {
         color: white;
