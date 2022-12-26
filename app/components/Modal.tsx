@@ -14,6 +14,7 @@ import {
 } from "react";
 import { isMobile } from "react-device-detect";
 import { createPortal } from "react-dom";
+import { Button } from "./Button";
 
 const transition = {
   ease: [0.32, 0.72, 0, 1],
@@ -153,7 +154,22 @@ export default forwardRef(function Modal(
               exit={{ x: "-50%", y: "100%", transition }}
             >
               <div className="header">
-                <h2>Modal</h2>
+                <Button
+                  type="primary"
+                  look="plain"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Cancel
+                </Button>
+                <span style={{ fontWeight: "bold" }}>Modal</span>
+                <Button
+                  type="primary"
+                  look="plain"
+                  bold
+                  onClick={() => setIsOpen(false)}
+                >
+                  Save
+                </Button>
               </div>
               <div className="content">{children}</div>
             </m.div>

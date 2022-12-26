@@ -1,0 +1,73 @@
+.btn {  
+    border: none;
+    border-radius: 8px;
+    padding: 0.45rem 0.75rem;
+    font-size: 1rem;
+    cursor: pointer;
+    user-select: none;
+    touch-action: none;
+    
+    &.primary {
+        color: white;
+        
+        &.plain {
+            background-color: transparent;
+            color: color('primary');
+        }
+        
+        &.gray {
+            background-color: color('gray-1');
+        }  
+        
+        &.filled {
+            background-color: color('primary');
+        }
+    }
+
+    &.danger {
+        color: white;
+        
+        &.plain {
+            background-color: transparent;
+            color: color('red');
+        }
+        
+        &.gray {
+            background-color: color('gray-1');
+        }  
+        
+        &.filled {
+            background-color: color('red');
+        }
+    }
+
+    &.warning {
+        color: white;
+        
+        &.plain {
+            background-color: transparent;
+            color: color('orange');
+        }
+        
+        &.gray {
+            background-color: color('gray-1');
+        }  
+        
+        &.filled {
+            background-color: color('orange');
+        }
+    }
+
+    &.default {
+        color: white;
+        
+        &.plain {
+            background-color: transparent;
+            color: color('gray-1');
+        }
+        
+        &.gray, &.filled {
+            background-color: color('gray-1');
+        }  
+    }
+}

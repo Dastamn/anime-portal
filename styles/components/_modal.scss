@@ -11,7 +11,6 @@
 }
 
 .modal-box {
-
     $header-height: 60px;
     $box-margin-top: 45px;
     $big-screen-min-width: 650px;
@@ -25,23 +24,25 @@
     overflow: hidden;
     top: 50%;
     width: 50%;
-
+    
     .header {
         align-items: center;
-        background-color: color('background-2', $alpha: - 0.5);
+        backdrop-filter: blur(10px);
+        background-color: color('background-2', $alpha: - 0.2);
         display: flex;
         height: $header-height;
-        justify-content: center;
-        position: sticky;
+        justify-content: space-between;
+        padding: 0 1.5rem;
+        position: fixed;
         top: 0;
-        width: 100%;
+        width: calc(100% - 7px /*scrollbar*/);
     }
 
     .content {
         height: 100%;
-        max-height: calc(100% - $header-height);
         overflow: hidden auto;
         padding: 1.2rem;
+        padding-top: $header-height;
     }
 
     @media screen and (max-width: $big-screen-min-width), screen and (orientation: landscape) and (max-height: 450px) and (max-width: 930px) {
@@ -53,7 +54,7 @@
         width: 100vw;
 
         .content {
-            max-height: calc(100% - $box-margin-top - $header-height - env(safe-area-inset-top));
+            max-height: calc(100% - $box-margin-top - env(safe-area-inset-top));
         }
     }
 }
